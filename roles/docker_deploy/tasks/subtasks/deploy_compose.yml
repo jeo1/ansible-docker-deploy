@@ -1,0 +1,51 @@
+- name: Clone docker compose git repos
+  git:
+    repo: "{{ item.value.git_repo_url }}"
+    dest: "{{ item.value.docker_dir }}"
+
+- name: Create dirs
+  file:
+    path: "{{ loop_var.config_path }}"
+    state: "{{ loop_var.state }}"
+    mode: "{{ loop_var.file_mode }}"
+  loop: "{{ item.value.config_dir }}"
+  loop_control:
+    loop_var: loop_var
+    label: "{{ loop_var }}" 
+  when:
+    item.value.config_dir is defined
+
+- name: Copy .env
+  copy:
+    src: "{{ loop_var.env_src }}"
+    dest: "{{ loop_var.env_dst }}"
+    remote_src: yes
+  loop: "{{ item.value.env_files }}"
+  loop_control:
+    loop_var: loop_var
+    label: "{{ loop_var }}"
+  when:
+    item.value.env_files is defined
+
+- name: Check for config dir
+  stat:
+    path: "{{ item.value.config_repo_dir }}"
+  register: config_dir_status
+  when:
+    - item.value.config_repo_url is defined
+    - item.value.config_repo_dir is defined
+
+- name: Restore config
+  git:
+    repo: "{{ item.value.config_repo_url }}"
+    dest: "{{ item.value.config_repo_dir }}"
+  when:
+    - item.value.config_repo_url is defined
+    - item.value.config_repo_dir is defined
+    - not config_dir_status.stat.exists
+
+- name: Run docker compose
+  community.docker.docker_compose_v2:
+    project_src: "{{ item.value.docker_dir }}"
+    state: present
+  
