@@ -2,3 +2,11 @@
   - include_tasks: subtasks/deploy_compose.yml
     loop: "{{ lookup('dict', docker_composes, wantlist=True) }}"
     when: docker_composes is defined
+
+- stat:
+    path: "{{ nginx_conf_dst }}"
+  register: nginx_data_file
+
+- include_tasks: subtasks/setup_post_data.yml
+  when:
+    - nginx_data_file.stat.exists
