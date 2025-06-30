@@ -10,12 +10,12 @@
 - name: Create data file for nginx
   copy:
     content: "{{ nginx_conf_list_var_name }}:"
-    dest: "{{ ngninx_conf_dst }}"
+    dest: "{{ nginx_conf_dst }}"
     force: no
 
 - name: Add service info for nginx data file
   blockinfile:
-    path: "{{ ngninx_conf_dst }}"
+    path: "{{ nginx_conf_dst }}"
     block: |2
         - service_name: "{{ loop_var.service_name }}"
           service_ip:  "{{ service_ip }}"

@@ -1,2 +1,2 @@
 nginx_conf_list_var_name: nginx_conf_list
-ngninx_conf_dst: /opt/nginx_data.yml
+nginx_conf_dst: /opt/nginx_data.yml
