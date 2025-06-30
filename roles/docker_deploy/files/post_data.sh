@@ -16,7 +16,4 @@ CMD="@reboot bash $SCRIPT_PATH $DATA_FILE $PORT"
 mv $SCRIPT_PATH /tmp/
 mv $1 /tmp/
 
-
-echo "$CMD" > /home/jeo/a
-
 crontab -l -u root | grep -vFx "$CMD" | crontab -u root -
