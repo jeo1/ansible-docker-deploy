@@ -1,4 +1,0 @@
-nginx_conf_list_var_name: nginx_conf_list
-nginx_conf_dst: /opt/nginx_data.yml
-nginx_post_script_dst: /opt/post_data.sh
-post_port: "12345"

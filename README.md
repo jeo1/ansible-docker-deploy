@@ -27,3 +27,16 @@ docker_composes:
 
 
 `ansible-pull -U https://github.com/jeo1/ansible-docker-deploy.git -i '<user>' -e '@/tmp/var.yml'`
+
+
+```yml
+docker_composes:
+  readarr:
+    git_repo_url: https://github.com/jeo1/docker-readarr.git
+    docker_dir: /home/docker/readarr
+    env_files:
+      - env_src: /home/jeo/readarr.env
+        env_dst: /home/docker/readarr/.env    
+    config_repo_url: http://192.168.1.150:3000/jeo/config-readarr.git
+    config_repo_dir: /home/config/readarr
+```
