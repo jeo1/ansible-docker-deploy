@@ -7,11 +7,11 @@
   when:
     - loop_var.service_ip is defined
 
-- name: Create data file for nginx
-  copy:
-    content: "{{ nginx_conf_list_var_name }}:"
-    dest: "{{ nginx_conf_dst }}"
-    force: no
+#- name: Create data file for nginx
+#  copy:
+#    content: "{{ nginx_conf_list_var_name }}:"
+#    dest: "{{ nginx_conf_dst }}"
+#    force: no
 
 - name: Add service info for nginx data file
   blockinfile:
