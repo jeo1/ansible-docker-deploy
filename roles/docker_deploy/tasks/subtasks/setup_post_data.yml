@@ -24,6 +24,6 @@
       echo -e "Content-Type: application/yml\r"
       echo -e "\r"
       cat {{ nginx_conf_dst }}
-    ) | nc -l -N {{ nginx_data_port }} &>/dev/null & disown
+    ) | nc -l -N {{ nginx_data_port }} &>/dev/null &
   async: 0
   poll: 0
