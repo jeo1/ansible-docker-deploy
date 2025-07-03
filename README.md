@@ -39,4 +39,11 @@ docker_composes:
         env_dst: /home/docker/readarr/.env    
     config_repo_url: http://192.168.1.150:3000/jeo/config-readarr.git
     config_repo_dir: /home/config/readarr
+    nginx_info:
+      - service_name: readarr
+        service_port: 8100
+        service_url: readarr.homelab.internal
+      - service_name: readarr-qbittorrent
+        service_port: 8101
+        service_url: readarr-qbittorrent.homelab.internal 
 ```
