@@ -16,6 +16,7 @@
           service_port: "{{ loop_var.service_port }}"
           service_url: "{{ loop_var.service_url }}"
     marker: ""
+    create: true
   when:
     - loop_var.service_name is defined
     - loop_var.service_port is defined
