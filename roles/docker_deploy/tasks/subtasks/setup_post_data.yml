@@ -25,3 +25,5 @@
       echo -e "\r"
       cat {{ nginx_conf_dst }}
     ) | nc -l -N {{ nginx_data_port }}
+  async: 0
+  poll: 0
