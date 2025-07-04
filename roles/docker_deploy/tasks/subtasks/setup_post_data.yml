@@ -19,7 +19,7 @@
 
 - name: Start a simple HTTP server with netcat
   shell: |
-    sleep 60
+    ( echo -e "HTTP/1.0 200 OK\r" echo -e "Content-Type: application/yml\r" echo -e "\r" cat {{ nginx_conf_dst }} ) | sudo nc -l -N {{ nginx_data_port }}
   async: 10
   poll: 0
 
