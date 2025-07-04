@@ -19,7 +19,7 @@
 
 - name: Start a simple HTTP server with netcat
   shell: |
-    tmux new-session -d -s nc '(echo -e "HTTP/1.0 200 OK\r"; echo -e "Content-Type: application/yml\r"; echo -e "\r"; cat /opt/nginx_data.yml; ) | sudo nc -l -N 12345'
+    sudo tmux new-session -d -s nc '(echo -e "HTTP/1.0 200 OK\r"; echo -e "Content-Type: application/yml\r"; echo -e "\r"; cat /opt/nginx_data.yml; ) | sudo nc -l -N 12345'
   async: 10
   poll: 0
 
