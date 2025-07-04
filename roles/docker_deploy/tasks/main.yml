@@ -16,6 +16,8 @@
       name: push repos
       hour: 4
       job: "bash {{ push_repo_file }}"
+  when:
+    push_repo_file is defined
 
 - block:
   - include_tasks: subtasks/deploy_compose.yml
