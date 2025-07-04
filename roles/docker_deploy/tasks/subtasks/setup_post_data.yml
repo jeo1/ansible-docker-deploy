@@ -19,4 +19,9 @@
 
 - name: Start a simple HTTP server with netcat
   shell: |
-    echo 1
+    sleep 60
+  async: 10
+  poll: 0
+
+- debug:
+    msg: done
