@@ -109,6 +109,7 @@
   - name: Add push config to push file
     blockinfile:
       path: "{{ push_repo_file }}"
+      create: yes
       block: |
         TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
         sudo git -C "{{ item.value.config_repo_dir }}" add .
