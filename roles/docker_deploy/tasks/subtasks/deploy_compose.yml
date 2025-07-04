@@ -105,6 +105,16 @@
       - item.value.config_repo_dir is defined
       - item.value.config_push_url_local is defined
       - not remote_match_found
+  
+  - name: Add push config to push file
+    blockinfile:
+      path: "{{ push_repo_file }}"
+      block: |
+        TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+        sudo git -C "{{ item.value.config_repo_dir }}" add .
+        sudo git -C "{{ item.value.config_repo_dir }}" commit -m "Auto commit at $TIMESTAMP"
+        sudo git -C "{{ item.value.config_repo_dir }}" push
+      marker: "# {mark} {{ item.key }}"
 
 
 - name: Run docker compose

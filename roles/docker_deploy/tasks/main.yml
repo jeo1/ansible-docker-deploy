@@ -1,4 +1,23 @@
 - block:
+  - stat:
+      path: "{{ push_repo_file }}"
+    register: push_repo_file_status
+
+  - name: Create push repo file
+    copy:
+      dest: "{{ push_repo_file }}"
+      content: |
+        #!/bin/sh
+    when: not push_repo_file_status.stat.exists
+  
+  - name: Create cron task to for push repo
+    cron:
+      user: root
+      name: push repos
+      hour: 4
+      job: "bash {{ push_repo_file }}"
+
+- block:
   - include_tasks: subtasks/deploy_compose.yml
     loop: "{{ lookup('dict', docker_composes, wantlist=True) }}"
     when: docker_composes is defined
