@@ -19,11 +19,6 @@
 
 - name: Start a simple HTTP server with netcat
   shell: |
-    (
-      echo -e "HTTP/1.0 200 OK\r"
-      echo -e "Content-Type: application/yml\r"
-      echo -e "\r"
-      cat {{ nginx_conf_dst }}
-    ) | sudo nc -l -N {{ nginx_data_port }} &
+    sudo tmux send-keys '(echo -e "HTTP/1.0 200 OK\r"; echo -e "Content-Type: application/yml\r"; echo -e "\r"; cat {{ nginx_conf_dst }}; ) | sudo nc -l -N {{ nginx_data_port }}' C-m
   async: 0
   poll: 0
