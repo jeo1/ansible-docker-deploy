@@ -103,7 +103,7 @@
     when:
       - item.value.config_repo_url is defined
       - item.value.config_repo_dir is defined
-      - item.value.config_push_url_local is defined
+      - item.value.config_push_url_remote is defined
       - not remote_match_found
   
   - name: Add push config to push file

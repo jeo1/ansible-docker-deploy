@@ -2,7 +2,6 @@
   apk:
     name:
       - netcat-openbsd
-      - bash
   when: ansible_distribution in ["Alpine"]
 
 #- name: Copy post data shell script
