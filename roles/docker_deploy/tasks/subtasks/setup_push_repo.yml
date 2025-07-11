@@ -1,6 +1,3 @@
-- debug:
-    msg: 
-
 - name: Get list of remotes
   shell: sudo git remote -v
   args:
