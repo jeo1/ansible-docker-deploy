@@ -1,3 +1,6 @@
+- debug:
+    msg: "{{ loop_var.push_repo_url }}"
+
 - name: Get list of remotes
   shell: sudo git remote -v
   args:
@@ -8,7 +11,8 @@
 - set_fact:
     match_found: "{{ loop_var.push_repo_url in git_remotes.stdout }}"
 
-
+- debug:
+    msg: "{{ match_found }}"
 
 - name: Add push repo
   shell:
