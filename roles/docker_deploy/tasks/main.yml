@@ -17,3 +17,12 @@
 - include_tasks: subtasks/setup_post_data.yml
   when:
     - nginx_data_file.stat.exists
+
+
+
+- set_fact:
+    a: "there"
+
+- template:
+    src: /home/jeo/a/sonarr.j2
+    dest: /home/jeo/a.txt
