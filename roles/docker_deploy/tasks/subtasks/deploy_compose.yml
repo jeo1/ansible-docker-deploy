@@ -121,6 +121,16 @@
       - push_repo_file is defined
 
 
+
+- include_tasks: setup_push_repo.yml
+  loop: "{{ item.value.git_config_push }}"
+  loop_control:
+    loop_var: loop_var
+    label: "{{ loop_var }}"
+  when:
+    - item.value.git_config_push is defined
+
+
 - name: Run docker compose
   community.docker.docker_compose_v2:
     project_src: "{{ item.value.docker_dir }}"
