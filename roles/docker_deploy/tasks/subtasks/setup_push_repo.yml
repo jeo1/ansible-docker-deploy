@@ -14,4 +14,4 @@
   args:
     chdir: "{{ loop_var.push_repo_dir }}"
   when:
-    - not local_match_found
+    - not match_found
