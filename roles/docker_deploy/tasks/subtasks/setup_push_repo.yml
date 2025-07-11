@@ -19,5 +19,5 @@
     sudo git remote set-url --add --push origin {{ loop_var.push_repo_url }}
   args:
     chdir: "{{ loop_var.push_repo_dir }}"
-#  when:
-#    - not match_found
+  when:
+    - not match_found
