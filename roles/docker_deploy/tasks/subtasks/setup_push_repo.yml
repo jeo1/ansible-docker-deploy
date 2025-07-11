@@ -1,4 +1,4 @@
 - debug:
-    - msg: "{{ loop_var.push_repo_url }}"
+    msg: "{{ loop_var.push_repo_url }}"
 - debug:
-    - msg: "{{ loop_var.push_repo_dir }}"
+    msg: "{{ loop_var.push_repo_dir }}"
