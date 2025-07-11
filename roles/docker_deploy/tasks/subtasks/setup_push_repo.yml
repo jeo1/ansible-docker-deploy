@@ -8,7 +8,7 @@
 - set_fact:
     match_found: "{{ loop_var.push_repo_dir in git_remotes.stdout }}"
 
-- name: Add local push
+- name: Add push repo
   shell:
     sudo git remote set-url --add --push origin {{ loop_var.push_repo_dir }}
   args:
