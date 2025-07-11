@@ -1,4 +1,17 @@
-- debug:
-    msg: "{{ loop_var.push_repo_url }}"
-- debug:
-    msg: "{{ loop_var.push_repo_dir }}"
+- name: Get list of remotes
+  shell: sudo git remote -v
+  args:
+    chdir: "{{ loop_var.push_repo_dir }}"
+  register: git_remotes
+  changed_when: false
+
+- set_fact:
+    match_found: "{{ loop_var.push_repo_dir in git_remotes.stdout }}"
+
+- name: Add local push
+  shell:
+    sudo git remote set-url --add --push origin {{ loop_var.push_repo_dir }}
+  args:
+    chdir: "{{ loop_var.push_repo_dir }}"
+  when:
+    - not local_match_found
