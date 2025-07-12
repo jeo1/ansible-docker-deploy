@@ -86,7 +86,7 @@
 
 
 - name: Copy env templates
-  copy:
+  template:
     src: "{{ loop_var.env_src }}"
     dest: "{{ loop_var.env_dst }}"
     remote_src: yes
