@@ -82,3 +82,17 @@
     label: "{{ loop_var }}"
   when:
     - item.value.nginx_info is defined
+
+
+
+- name: Copy env templates
+  copy:
+    src: "{{ loop_var.env_src }}"
+    dest: "{{ loop_var.env_dst }}"
+    remote_src: yes
+  loop: "{{ item.value.env_templates }}"
+  loop_control:
+    loop_var: loop_var
+    label: "{{ loop_var }}"
+  when:
+    item.value.env_templates is defined
