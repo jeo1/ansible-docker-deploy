@@ -1,0 +1,15 @@
+- name: Ensure parent directory exists
+  ansible.builtin.file:
+    path: "{{ loop_var.env_dst | dirname }}"
+    state: directory
+    mode: '0755'
+
+- name: Copy env templates
+  template:
+    src: "{{ loop_var.env_src }}"
+    dest: "{{ loop_var.env_dst }}"
+    remote_src: yes
+  loop: "{{ item.value.env_templates }}"
+  loop_control:
+    loop_var: loop_var
+    label: "{{ loop_var }}"

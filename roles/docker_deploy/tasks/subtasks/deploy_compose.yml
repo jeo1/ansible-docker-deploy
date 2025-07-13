@@ -96,3 +96,12 @@
     label: "{{ loop_var }}"
   when:
     item.value.env_templates is defined
+
+
+- include_tasks: create_envs.yml
+  loop: "{{ item.value.env_templates }}"
+  loop_control:
+    loop_var: loop_var
+    label: "{{ loop_var }}"
+  when:
+    - item.value.env_templates is defined
