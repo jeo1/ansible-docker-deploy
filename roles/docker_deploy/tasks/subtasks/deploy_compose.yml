@@ -41,6 +41,13 @@
     when:
       item.value.env_files is defined
 
+- include_tasks: create_envs.yml
+  loop: "{{ item.value.env_templates }}"
+  loop_control:
+    loop_var: loop_var
+    label: "{{ loop_var }}"
+  when:
+    - item.value.env_templates is defined
 
 - block:
   - name: Check for config dir
@@ -82,11 +89,3 @@
     label: "{{ loop_var }}"
   when:
     - item.value.nginx_info is defined
-
-- include_tasks: create_envs.yml
-  loop: "{{ item.value.env_templates }}"
-  loop_control:
-    loop_var: loop_var
-    label: "{{ loop_var }}"
-  when:
-    - item.value.env_templates is defined
