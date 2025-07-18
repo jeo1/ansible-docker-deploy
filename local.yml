@@ -4,9 +4,3 @@
   become: true
   roles:
     - role: docker_deploy
-
-- name: Run on remote hosts
-  hosts: all
-  become: true
-  roles:
-    - role: docker_deploy
