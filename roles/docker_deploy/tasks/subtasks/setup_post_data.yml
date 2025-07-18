@@ -4,18 +4,6 @@
       - netcat-openbsd
   when: ansible_distribution in ["Alpine"]
 
-#- name: Copy post data shell script
-#  copy:
-#    src: post_data.sh
-#    dest: "{{ nginx_post_script_dst }}"
-
-#- name: Create cron task to post nginx data
-#  cron:
-#    user: root
-#    name: post nginx data
-#    special_time: reboot
-#    job: "bash {{ nginx_post_script_dst }} {{ nginx_conf_dst }} {{ nginx_data_port }}"
-
 - name: Start a simple HTTP server with netcat
   shell: |
     sudo tmux new-session -d -s nc '(echo -e "HTTP/1.0 200 OK\r"; echo -e "Content-Type: application/yml\r"; echo -e "\r"; cat /opt/nginx_data.yml; ) | sudo nc -l -N 12345'
