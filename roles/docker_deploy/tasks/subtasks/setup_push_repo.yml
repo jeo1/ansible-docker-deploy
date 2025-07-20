@@ -1,6 +1,3 @@
-- debug:
-    msg: "{{ loop_var.push_repo_dir }}"
-
 - name: Get list of remotes
   shell: sudo git remote -v
   args:
@@ -28,5 +25,5 @@
 - name: Add repo dest to push_repo.sh
   lineinfile:
     path: "{{ push_repo_file }}"
-    insertafter: '^.*(?=\)\s*#)'
+    insertbefore: '^.*(?=\)\s*#)'
     line: '{{ loop_var.push_repo_dir }}'
