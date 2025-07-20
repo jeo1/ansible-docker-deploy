@@ -30,4 +30,3 @@
       "{{ loop_var.push_repo_dir }}"
     insertafter: 'REPO_DIRS=('
     create: no
-  when: "'{{ loop_var.push_repo_dir }}' not in lookup('file', '{{ push_repo_file }}')"
