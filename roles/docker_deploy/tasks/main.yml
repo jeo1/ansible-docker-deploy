@@ -28,3 +28,5 @@
     - git_password is defined
     - git_server_ip is defined
     
+- name: Set git credential helper to 'store'
+  shell: git config --global credential.helper store
