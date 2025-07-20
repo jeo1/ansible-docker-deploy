@@ -21,7 +21,7 @@
 - name: Setup git credentials
   copy:
     dest: /root/.git-credentials
-    content: "https://{{ git_username }}:{{ git_password }}@{{ git_server_ip }}"
+    content: "http://{{ git_username }}:{{ git_password }}@{{ git_server_ip }}"
     mode: "0600"
   when:
     - git_username is defined
