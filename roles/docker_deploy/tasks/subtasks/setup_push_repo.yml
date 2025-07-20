@@ -28,5 +28,6 @@
     marker: ""
     block: |
       "{{ loop_var.push_repo_dir }}"
-    insertafter: 'REPO_DIRS=('
+    insertafter: 'REPO_DIRS=\('
     create: no
+    
