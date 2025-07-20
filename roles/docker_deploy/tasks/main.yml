@@ -17,3 +17,14 @@
 - include_tasks: subtasks/setup_post_data.yml
   when:
     - nginx_data_file.stat.exists
+
+- name: Setup git credentials
+  copy:
+    dest: /root/.git-credentials
+    content: "https://{{ git_username }}:{{ git_password }}@{{ git_server_ip }}"
+    mode: "0600"
+  when:
+    - git_username is defined
+    - git_password is defined
+    - git_server_ip is defined
+    

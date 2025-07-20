@@ -5,16 +5,10 @@
       chdir: "{{ loop_var.push_repo_dir }}"
     register: git_remotes
     changed_when: false
-  rescue:
-    - shell: 
+  
+  - name: Make repo safe directory
+    shell: 
         sudo git config --global --add safe.directory {{ loop_var.push_repo_dir }}
-    
-    - name: Retry get list of remotes
-      shell: sudo git remote -v
-      args:
-        chdir: "{{ loop_var.push_repo_dir }}"
-      register: git_remotes
-      changed_when: false
 
 - set_fact:
     match_found: "{{ loop_var.push_repo_url in git_remotes.stdout }}"
