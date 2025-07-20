@@ -23,11 +23,7 @@
     force: false
 
 - name: Add repo dest to push_repo.sh
-  blockinfile:
+  lineinfile:
     path: "{{ push_repo_file }}"
-    marker: ""
-    block: |
-      "{{ loop_var.push_repo_dir }}"
-    insertafter: 'REPO_DIRS=\('
-    create: no
-    
+    line: "{{ loop_var.push_repo_dir }}"
+    insertafter: '^\s*REPO_DIRS=(\s*$'
