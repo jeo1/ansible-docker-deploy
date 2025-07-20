@@ -21,3 +21,12 @@
     src: push_repo.sh
     dest: "{{ push_repo_file }}"
     force: false
+
+- name: Add repo dest to push_repo.sh
+  blockinfile:
+    path: /opt/push_repos.sh
+    marker: ""
+    block: |
+      "Hello there"
+    insertafter: '^REPO_DIRS=\($'
+    create: no
