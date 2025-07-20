@@ -21,9 +21,3 @@
     src: push_repo.sh
     dest: "{{ push_repo_file }}"
     force: false
-
-- name: Add repo dest to push_repo.sh
-  lineinfile:
-    path: "{{ push_repo_file }}"
-    line: "{{ loop_var.push_repo_dir }}"
-    insertafter: '^\s*REPO_DIRS=(\s*$'
