@@ -4,3 +4,11 @@
   become: true
   roles:
     - role: docker_deploy
+  tags: run_local
+
+- name: Run on remotes
+  hosts: all
+  become: true
+  roles:
+    - role: docker_deploy
+  tags: run_remote
