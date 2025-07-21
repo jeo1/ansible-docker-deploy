@@ -4,12 +4,8 @@
     state: directory
     mode: '0755'
 
-- name: Copy env templates
-  template:
-    src: "{{ loop_var.env_src }}"
-    dest: "{{ loop_var.env_dst }}"
-    remote_src: yes
+- include_tasks: create_envs_template.yml
   loop: "{{ item.value.env_templates }}"
   loop_control:
-    loop_var: loop_var
-    label: "{{ loop_var }}"
+    loop_var: env_template
+    label: "{{ env_template }}"
