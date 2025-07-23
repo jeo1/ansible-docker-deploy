@@ -11,10 +11,12 @@
 - blockinfile:
     path: "{{ nginx_conf_dst }}"
     block: |2
+        
         - service_name: "{{ loop_var.service_name }}"
           service_ip:  "{{ service_ip }}"
           service_port: "{{ loop_var.service_port }}"
           service_url: "{{ loop_var.service_url }}"
+
     marker: ""
     create: true
   when:
