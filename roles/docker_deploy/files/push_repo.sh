@@ -10,5 +10,5 @@ for DIR in "${REPO_DIRS[@]}"; do
   commit_msg="Auto commit at $timestamp"
   git add .
   git commit -m "$commit_msg"
-  git push
+  git push -f
 done
