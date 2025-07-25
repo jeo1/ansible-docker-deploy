@@ -15,10 +15,6 @@
     path: "{{ nginx_conf_dst }}"
   register: nginx_data_file
 
-- include_tasks: subtasks/setup_post_data.yml
-  when:
-    - nginx_data_file.stat.exists
-
 - name: Setup git credentials
   copy:
     dest: /root/.git-credentials
