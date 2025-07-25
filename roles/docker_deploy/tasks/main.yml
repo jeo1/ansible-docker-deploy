@@ -2,6 +2,7 @@
   cron:
     user: root
     name: push repos
+    minute: 0
     hour: 4
     job: "bash {{ push_repo_file }}"
 
